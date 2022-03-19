@@ -1,11 +1,14 @@
 #letsStart
-cd /opt/openstack-helm
+cd /opt/
 set -xe
 
 git clone https://opendev.org/openstack/openstack-helm-infra.git
 git clone https://opendev.org/openstack/openstack-helm.git
 
-#!/bin/bash
+
+cd /opt/openstack-helm
+
+
 sudo -H -E pip3 install --upgrade pip
 sudo -H -E pip3 install \
   -c${UPPER_CONSTRAINTS_FILE:=https://releases.openstack.org/constraints/upper/${OPENSTACK_RELEASE:-stein}} \
