@@ -9,11 +9,6 @@ git clone https://opendev.org/openstack/openstack-helm.git
 cd /opt/openstack-helm
 
 
-sudo -H -E pip3 install --upgrade pip
-sudo -H -E pip3 install \
-  -c${UPPER_CONSTRAINTS_FILE:=https://releases.openstack.org/constraints/upper/${OPENSTACK_RELEASE:-stein}} \
-  cmd2 python-openstackclient python-heatclient --ignore-installed
-
 
 export HELM_CHART_ROOT_PATH=/opt/openstack-helm-infra/
 export OSH_INFRA_PATH=/opt/openstack-helm-infra/
@@ -402,8 +397,7 @@ helm upgrade --install neutron ./neutron \
     ${OSH_EXTRA_HELM_ARGS} \
     ${OSH_EXTRA_HELM_ARGS_NEUTRON}
 
-./tools/deployment/common/wait-for-pods.sh openstack
-
+sleep 60
 
 
 
